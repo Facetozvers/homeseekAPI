@@ -14,20 +14,20 @@ function tokenizing($s1, $s2){
     }
     
     //tokenizing dengan spasi, titik, dan koma
-    $tok1 = strtok($string1, " ,.");
+    $tok1 = strtok($string1, " ,.\n\t-?=:_;/()&^%$#@!{}[]|+");
     $parts1 = [];
     
     while ($tok1 !== false) {
         $parts1[] = $tok1;
-        $tok1 = strtok(" ,.");
+        $tok1 = strtok(" ,.\n\t-?=:_;/()&^%$#@!{}[]|+");
     }
     
-    $tok2 = strtok($string2, " ,.");
+    $tok2 = strtok($string2, " ,.\n\t-?=:_;/()&^%$#@!{}[]|+");
     $parts2 = [];
     
     while ($tok2 !== false) {
         $parts2[] = $tok2;
-        $tok2 = strtok(" ,.");
+        $tok2 = strtok(" ,.\n\t-?=:_;/()&^%$#@!{}[]|+");
     }
     
     //mencari kesamaan kata dari kedua string dan menjadikannya t0
