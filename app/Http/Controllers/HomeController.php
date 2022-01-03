@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Listing;
+use App\ListingFacility;
 
 class HomeController extends Controller
 {
@@ -48,7 +49,6 @@ class HomeController extends Controller
         $listing->garasi = $request->garasi;
         $listing->desc = $request->desc;
         $listing->id_admin = Auth::id();
-
         
         //pembuatan ID Properti
 
@@ -63,11 +63,23 @@ class HomeController extends Controller
 
         $listing->save();
 
+
+        $facility = new ListingFacility;
+        $facility->listing_id = $listing->id;
+        $facility->carport = (int)isset($request->carport);
+        $facility->garden = (int)isset($request->garden);
+        $facility->gym = (int)isset($request->gym);
+        $facility->swimming_pool = (int)isset($request->swimming_pool);
+        $facility->restaurant = (int)isset($request->restaurant);
+        $facility->security = (int)isset($request->security);
+
+        $facility->save();
+
         return redirect('/home')->with(['message' => 'Listing Berhasil Dibuat!', 'alert-class' => 'alert-success']);
     }
 
     public function edit($id){
-        $listing = Listing::where('id_properti', $id)->first();
+        $listing = Listing::where('id_properti', $id)->with('listing_facilities')->first();
         return view('edit', ['listing' => $listing]);
     }
 
@@ -86,7 +98,16 @@ class HomeController extends Controller
         $listing->garasi = $request->garasi;
         $listing->desc = $request->desc;
 
+        $facility = ListingFacility::where('listing_id', $listing->id)->first();
+        $facility->carport = (int)isset($request->carport);
+        $facility->garden = (int)isset($request->garden);
+        $facility->gym = (int)isset($request->gym);
+        $facility->swimming_pool = (int)isset($request->swimming_pool);
+        $facility->restaurant = (int)isset($request->restaurant);
+        $facility->security = (int)isset($request->security);
+
         $listing->save();
+        $facility->save();
 
         return redirect('/home')->with(['message' => 'Perubahan Berhasil Disimpan!', 'alert-class' => 'alert-success']);
     }

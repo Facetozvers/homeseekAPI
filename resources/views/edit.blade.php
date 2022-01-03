@@ -87,6 +87,31 @@
                     </div>   
                 </div>
             </div>
+            <p class="form-label">Fasilitas</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="carport" id="inlineCheckbox1" value="1" {{$listing->listing_facilities->carport == 1 ? 'checked' : 'unchecked'}}>
+                <label class="form-check-label" for="inlineCheckbox1">Carport</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="garden" id="inlineCheckbox2" value="1" {{$listing->listing_facilities->garden == 1 ? 'checked' : 'unchecked'}}>
+                <label class="form-check-label" for="inlineCheckbox2">Garden</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="swimming_pool" id="inlineCheckbox3" value="1" {{$listing->listing_facilities->swimming_pool == 1 ? 'checked' : 'unchecked'}}>
+                <label class="form-check-label" for="inlineCheckbox3">Kolam Renang</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="gym" id="inlineCheckbox4" value="1" {{$listing->listing_facilities->gym == 1 ? 'checked' : 'unchecked'}}>
+                <label class="form-check-label" for="inlineCheckbox4">Gym</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="security" id="inlineCheckbox5" value="1" {{$listing->listing_facilities->security == 1 ? 'checked' : 'unchecked'}}>
+                <label class="form-check-label" for="inlineCheckbox5">Security</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="restaurant" id="inlineCheckbox6" value="1" {{$listing->listing_facilities->restaurant == 1 ? 'checked' : 'unchecked'}}>
+                <label class="form-check-label" for="inlineCheckbox6">Restoran</label>
+            </div>
             <div class="mb-3">
                     <div class="form-group">
                         <label>Deskripsi Tambahan</label>
